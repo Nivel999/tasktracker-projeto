@@ -64,8 +64,27 @@ def cadastrar_tarefa():
     print(f"\nTarefa registrada com sucesso! (ID {tarefa['id']})")
 
 
+def exibir_tarefa(tarefa):
+    print(
+        f"[{tarefa['id']}] {tarefa['titulo']} | Prioridade: {tarefa['prioridade']} | "
+        f"Data: {tarefa['data_limite']} | Status: {tarefa['status']}"
+    )
+    if tarefa["descricao"]:
+        print(f"    Descrição: {tarefa['descricao']}")
+
+
 def listar_tarefas():
-    print("\nListar tarefas: funcionalidade em construção.")
+    print("\n--- Lista de tarefas ---")
+    if len(tarefas) == 0:
+        print("Nenhuma tarefa cadastrada.")
+        return
+
+    for tarefa in tarefas:
+        exibir_tarefa(tarefa)
+
+    pendentes = sum(1 for tarefa in tarefas if tarefa["status"] == "Pendente")
+    concluidas = len(tarefas) - pendentes
+    print(f"\nTotal: {len(tarefas)} | Pendentes: {pendentes} | Concluídas: {concluidas}")
 
 
 def concluir_tarefa():
