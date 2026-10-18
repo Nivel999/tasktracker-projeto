@@ -88,7 +88,31 @@ def listar_tarefas():
 
 
 def concluir_tarefa():
-    print("\nConcluir tarefa: funcionalidade em construção.")
+    print("\n--- Concluir tarefa ---")
+    if len(tarefas) == 0:
+        print("Não há tarefas para concluir.")
+        return
+
+    print("Tarefas pendentes:")
+    for tarefa in tarefas:
+        if tarefa["status"] == "Pendente":
+            exibir_tarefa(tarefa)
+
+    entrada = input("\nDigite o ID da tarefa: ").strip()
+    if not entrada.isdigit():
+        print("ID inválido/não encontrado.")
+        return
+
+    for tarefa in tarefas:
+        if tarefa["id"] == int(entrada):
+            if tarefa["status"] == "Concluída":
+                print("Essa tarefa já havia sido finalizada.")
+            else:
+                tarefa["status"] = "Concluída"
+                print(f'Tarefa "{tarefa["titulo"]}" concluída com sucesso!')
+            return
+
+    print("ID inválido/não encontrado.")
 
 
 def exibir_menu():
