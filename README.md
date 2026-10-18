@@ -57,7 +57,7 @@ tasktracker-projeto/
 1. Instale o [Python 3](https://www.python.org/downloads/).
 2. Clone o repositório:
    ```bash
-   git clone https://github.com/<seu-usuario>/tasktracker-projeto.git
+   git clone https://github.com/Nivel999/tasktracker-projeto.git
    cd tasktracker-projeto
    ```
 3. Execute a aplicação:
